@@ -94,7 +94,6 @@ class TransaksiSewaSerializer(serializers.ModelSerializer):
 
             # STATUS TERSEDIA
             if baju.stok <= 0:
-
                 baju.status_ketersediaan = (
                     'TIDAK_TERSEDIA'
                 )
