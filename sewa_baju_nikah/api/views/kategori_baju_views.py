@@ -84,10 +84,13 @@ class KategoriBajuAPIView(APIView):
 # DETAIL, UPDATE, DELETE
 class DetailKategoriBajuAPIView(APIView):
 
-    permission_classes = [
-        IsAuthenticated,
-        IsAdminOrKasirPermission
-    ]
+    def get_permissions(self):
+        if self.request.method == 'GET':
+            return [AllowAny()]
+        return [
+            IsAuthenticated(),
+            IsAdminOrKasirPermission()
+        ]
 
     # GET OBJECT
     def get_object(self, pk):
