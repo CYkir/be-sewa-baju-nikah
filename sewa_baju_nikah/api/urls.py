@@ -14,6 +14,7 @@ from api.views.ukuran_baju_views import UkuranBajuAPIView, DetailUkuranBajuAPIVi
 from api.views.baju_nikah_views import BajuNikahAPIView, DetailBajuNikahAPIView, BajuNikahFilterApi
 from api.views.penyewa_views import PenyewaAPIView, DetailPenyewaAPIView
 from api.views.transaksi_sewa_views import TransaksiSewaAPIView
+from api.views.pembayaran_views import  PembayaranAPIView
 
 
 
@@ -43,6 +44,9 @@ urlpatterns = [
 
     #Transaksi
     path('transaksi-sewa/',TransaksiSewaAPIView.as_view(),name='transaksi-sewa'),
+
+    #pembayaran
+    path('pembayaran/', PembayaranAPIView.as_view(),name='pembayaran'),
 ]
 
 if settings.DEBUG:
