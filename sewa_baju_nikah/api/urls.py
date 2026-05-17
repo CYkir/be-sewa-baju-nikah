@@ -14,6 +14,8 @@ from api.views.auth_views import (
 from api.views.kategori_baju_views import KategoriBajuAPIView, DetailKategoriBajuAPIView
 from api.views.ukuran_baju_views import UkuranBajuAPIView, DetailUkuranBajuAPIView
 from api.views.baju_nikah_views import BajuNikahAPIView, DetailBajuNikahAPIView, BajuNikahFilterApi
+from api.views.penyewa_views import PenyewaAPIView, DetailPenyewaAPIView,
+
 
 
 app_name = 'api'
@@ -35,6 +37,10 @@ urlpatterns = [
     path('baju-nikah/',BajuNikahAPIView.as_view(),name='baju-nikah'),
     path('baju-nikah/<int:pk>/',DetailBajuNikahAPIView.as_view(),name='detail-baju-nikah'),
     path('baju-nikah-filter/', BajuNikahFilterApi.as_view(), name= 'baju-nikah-filter' ),
+
+    # Penyewa
+    path('penyewa/', PenyewaAPIView.as_view(), name = 'penyewa'),
+    path('penyewa/<int:pk>/' , DetailPenyewaAPIView.as_view(), name = 'detail-penyewa')
 ]
 
 if settings.DEBUG:
