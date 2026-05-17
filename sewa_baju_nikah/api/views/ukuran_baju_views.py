@@ -108,7 +108,8 @@ class DetailUkuranBajuAPIView(APIView):
             }, status=status.HTTP_404_NOT_FOUND)
         serializer = UkuranBajuSerializer(
             ukuran,
-            data=request.data
+            data=request.data,
+            partial = True
         )
         if serializer.is_valid():
             serializer.save()

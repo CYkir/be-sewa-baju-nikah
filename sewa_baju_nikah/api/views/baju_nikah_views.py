@@ -123,7 +123,8 @@ class DetailBajuNikahAPIView(APIView):
 
         serializer = BajuNikahSerializer(
             baju,
-            data=request.data
+            data=request.data,
+            partial = True
         )
 
         if serializer.is_valid():

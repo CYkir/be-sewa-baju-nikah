@@ -7,7 +7,6 @@ from sewa_baju_nikah_app.models import (
 class PenyewaSerializer(serializers.ModelSerializer):
 
     class Meta:
-
         model = Penyewa
         fields = [
             'id',
