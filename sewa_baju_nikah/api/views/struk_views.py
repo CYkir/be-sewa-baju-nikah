@@ -338,21 +338,13 @@ class CetakStrukAPIView(APIView):
         )
         # RESPONSE JSON
         return JsonResponse({
-
             'success': True,
-
             'status': status.HTTP_200_OK,
-
             'message': 'Struk berhasil dibuat',
-
             'data': {
-
                 'kode_transaksi': (
                     transaksi.kode_transaksi
                 ),
-
                 'url_struk': pdf_url
-
             }
-
         }, status=status.HTTP_200_OK)
