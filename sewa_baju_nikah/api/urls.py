@@ -34,7 +34,7 @@ urlpatterns = [
     # Baju Nikah
     path('baju-nikah/',BajuNikahAPIView.as_view(),name='baju-nikah'),
     path('baju-nikah/<int:pk>/',DetailBajuNikahAPIView.as_view(),name='detail-baju-nikah'),
-    path('baju-nikah-filter/', BajuNikahFilterApi.as_view(), name= 'baju-nikah-filter' )
+    path('baju-nikah-filter/', BajuNikahFilterApi.as_view(), name= 'baju-nikah-filter' ),
 ]
 
 if settings.DEBUG:
