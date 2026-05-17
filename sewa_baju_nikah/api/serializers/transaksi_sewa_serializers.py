@@ -1,5 +1,5 @@
 from rest_framework import serializers
-
+from django.db import transaction
 from sewa_baju_nikah_app.models import (
     TransaksiSewa,
     DetailTransaksiSewa,
@@ -67,38 +67,44 @@ class TransaksiSewaSerializer(serializers.ModelSerializer):
             'updated_at',
         ]
 
-    def create(self, validated_data):
-        detail_data = validated_data.pop(
-            'detail_transaksi'
+# CREATE TRANSAKSI
+@transaction.atomic
+def create(self, validated_data):
+    detail_data = validated_data.pop(
+        'detail_transaksi'
+    )
+    transaksi = TransaksiSewa.objects.create(
+        **validated_data
+    )
+    total_bayar = 0
+    for item in detail_data:
+        baju = item['baju']
+        qty = item['qty']
+        # VALIDASI STOK
+        if baju.stok < qty:
+            raise serializers.ValidationError({
+                'baju': f'Stok baju {baju.nama_baju} tidak tersedia'
+            })
+        harga = baju.harga_sewa
+        subtotal = harga * qty
+
+        # CREATE DETAIL
+        DetailTransaksiSewa.objects.create(
+            transaksi=transaksi,
+            baju=baju,
+            qty=qty,
+            harga_sewa=harga,
+            subtotal=subtotal
         )
-        transaksi = TransaksiSewa.objects.create(
-            **validated_data
-        )
-        total_bayar = 0
-        for item in detail_data:
-            baju = item['baju']
-            qty = item['qty']
-            harga = baju.harga_sewa
-            subtotal = harga * qty
-            # CREATE DETAIL
-            DetailTransaksiSewa.objects.create(
-                transaksi=transaksi,
-                baju=baju,
-                qty=qty,
-                harga_sewa=harga,
-                subtotal=subtotal
+
+        baju.stok -= qty
+
+        if baju.stok <= 0:
+            baju.status_ketersediaan = (
+                'TIDAK_TERSEDIA'
             )
-
-            # UPDATE STOK
-            baju.stok -= qty
-
-            # STATUS TERSEDIA
-            if baju.stok <= 0:
-                baju.status_ketersediaan = (
-                    'TIDAK_TERSEDIA'
-                )
-            baju.save()
-            total_bayar += subtotal
-        transaksi.total_bayar = total_bayar
-        transaksi.save()
-        return transaksi
+        baju.save()
+        total_bayar += subtotal
+    transaksi.total_bayar = total_bayar
+    transaksi.save()
+    return transaksi
