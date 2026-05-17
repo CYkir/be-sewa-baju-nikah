@@ -14,7 +14,7 @@ from api.views.auth_views import (
 from api.views.kategori_baju_views import KategoriBajuAPIView, DetailKategoriBajuAPIView
 from api.views.ukuran_baju_views import UkuranBajuAPIView, DetailUkuranBajuAPIView
 from api.views.baju_nikah_views import BajuNikahAPIView, DetailBajuNikahAPIView, BajuNikahFilterApi
-from api.views.penyewa_views import PenyewaAPIView, DetailPenyewaAPIView,
+from api.views.penyewa_views import PenyewaAPIView, DetailPenyewaAPIView
 
 
 
