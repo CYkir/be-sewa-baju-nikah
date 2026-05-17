@@ -111,7 +111,7 @@ class DetailBajuNikahAPIView(APIView):
             'data': serializer.data,
         }, status=status.HTTP_200_OK)
 
-    def put(self, request, pk):
+    def patch(self, request, pk):
         baju = self.get_object(pk)
         if baju is None:
             return JsonResponse({

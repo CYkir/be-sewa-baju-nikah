@@ -98,7 +98,7 @@ class DetailUkuranBajuAPIView(APIView):
         }, status=status.HTTP_200_OK)
 
 
-    def put(self, request, pk):
+    def patch(self, request, pk):
         ukuran = self.get_object(pk)
         if ukuran is None:
             return JsonResponse({

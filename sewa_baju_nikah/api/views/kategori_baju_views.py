@@ -124,11 +124,8 @@ class DetailKategoriBajuAPIView(APIView):
             'data': serializer.data,
         }, status=status.HTTP_200_OK)
 
-    
     # UPDATE DATA
-    
-
-    def put(self, request, pk):
+    def patch(self, request, pk):
         kategori = self.get_object(pk)
         if kategori is None:
             return JsonResponse({
@@ -140,7 +137,8 @@ class DetailKategoriBajuAPIView(APIView):
 
         serializer = KategoriBajuSerializer(
             kategori,
-            data=request.data
+            data=request.data,
+            partial = True
         )
 
         if serializer.is_valid():
@@ -162,10 +160,8 @@ class DetailKategoriBajuAPIView(APIView):
             'errors': serializer.errors,
         }, status=status.HTTP_400_BAD_REQUEST)
 
-    
-    # SOFT DELETE
-    
 
+    # SOFT DELETE
     def delete(self, request, pk):
         kategori = self.get_object(pk)
         if kategori is None:
