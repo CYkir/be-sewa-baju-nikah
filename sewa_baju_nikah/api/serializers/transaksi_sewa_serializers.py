@@ -7,6 +7,7 @@ from sewa_baju_nikah_app.models import (
 )
 
 class DetailTransaksiSewaSerializer(serializers.ModelSerializer):
+
     nama_baju = serializers.CharField(
         source='baju.nama_baju',
         read_only=True
@@ -15,6 +16,17 @@ class DetailTransaksiSewaSerializer(serializers.ModelSerializer):
         source='baju.foto_baju',
         read_only=True
     )
+    harga_sewa = serializers.DecimalField(
+        max_digits=12,
+        decimal_places=2,
+        read_only=True
+    )
+    subtotal = serializers.DecimalField(
+        max_digits=12,
+        decimal_places=2,
+        read_only=True
+    )
+
     class Meta:
         model = DetailTransaksiSewa
         fields = [

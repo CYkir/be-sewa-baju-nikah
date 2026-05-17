@@ -13,7 +13,7 @@ from api.serializers.transaksi_sewa_serializers import (
     TransaksiSewaSerializer
 )
 from api.permissions.role_permissions import (
-    IsAdminOrKasirPermission
+    IsAdminOrKasirPermission, IsAdminPermission, IsKasirPermission
 )
 from api.utils.transaction_helper import (
     generate_kode_transaksi
@@ -23,11 +23,14 @@ class TransaksiSewaAPIView(APIView):
 
     def get_permissions(self):
       if self.request.method == 'GET':
-        return AllowAny()
+        return [
+          IsAuthenticated(),
+          IsAdminPermission()
+        ]
 
       return [
             IsAuthenticated(),
-            IsAdminOrKasirPermission()
+            IsKasirPermission()
         ]
 
     def get(self, request):
