@@ -3,7 +3,8 @@ from django.http import JsonResponse
 from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.permissions import (
-    IsAuthenticated
+    IsAuthenticated,
+    AllowAny
 )
 
 from sewa_baju_nikah_app.models import (
@@ -28,13 +29,13 @@ from api.permissions.role_permissions import (
 
 class PenyewaAPIView(APIView):
 
-
     def get_permissions(self):
-
-        return [
-            IsAuthenticated(),
-            IsAdminOrKasirPermission()
-        ]
+            if self.request.method == 'GET':
+                return [AllowAny()]
+            return [
+                IsAuthenticated(),
+                IsAdminOrKasirPermission()
+            ]
 
     def get(self, request):
 
@@ -77,10 +78,12 @@ class PenyewaAPIView(APIView):
 class DetailPenyewaAPIView(APIView):
 
     def get_permissions(self):
+        if self.request.method == 'GET':
+            return [AllowAny()]
         return [
-            IsAuthenticated(),
-            IsAdminOrKasirPermission()
-        ]
+                IsAuthenticated(),
+                IsAdminOrKasirPermission()
+            ]
 
     def get_object(self, pk):
 
