@@ -1,0 +1,44 @@
+from django.urls import path, include
+from rest_framework.urlpatterns import format_suffix_patterns
+from django.conf import settings
+from django.conf.urls.static import static
+
+
+
+from api.views.auth_views import (
+    RegisterAPIView,
+    LoginAPIView,
+    LogoutAPIView,
+)
+
+from api.views.kategori_baju_views import KategoriBajuAPIView, DetailKategoriBajuAPIView
+from api.views.ukuran_baju_views import UkuranBajuAPIView, DetailUkuranBajuAPIView
+from api.views.baju_nikah_views import BajuNikahAPIView, DetailBajuNikahAPIView, BajuNikahFilterApi
+
+
+app_name = 'api'
+
+urlpatterns = [
+    path('auth/register/', RegisterAPIView.as_view(),name='register'),
+    path('auth/login/',LoginAPIView.as_view(),name='login'),
+    path('auth/logout/',LogoutAPIView.as_view(), name='logout'),
+
+    #Kategori
+    path('kategori-baju/',KategoriBajuAPIView.as_view(),name='kategori-baju'),
+    path('kategori-baju/<int:pk>/',DetailKategoriBajuAPIView.as_view(),name='detail-kategori-baju'),
+
+    # Ukuran Baju
+    path('ukuran-baju/',UkuranBajuAPIView.as_view(),name='ukuran-baju'),
+    path('ukuran-baju/<int:pk>/',DetailUkuranBajuAPIView.as_view(),name='detail-ukuran-baju'),
+
+    # Baju Nikah
+    path('baju-nikah/',BajuNikahAPIView.as_view(),name='baju-nikah'),
+    path('baju-nikah/<int:pk>/',DetailBajuNikahAPIView.as_view(),name='detail-baju-nikah'),
+    path('baju-nikah-filter/', BajuNikahFilterApi.as_view(), name= 'baju-nikah-filter' )
+]
+
+if settings.DEBUG:
+    urlpatterns += static(
+        settings.MEDIA_URL,
+        document_root=settings.MEDIA_ROOT
+    )
