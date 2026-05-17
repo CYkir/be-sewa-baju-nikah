@@ -3,8 +3,6 @@ from rest_framework.urlpatterns import format_suffix_patterns
 from django.conf import settings
 from django.conf.urls.static import static
 
-
-
 from api.views.auth_views import (
     RegisterAPIView,
     LoginAPIView,
@@ -15,7 +13,6 @@ from api.views.kategori_baju_views import KategoriBajuAPIView, DetailKategoriBaj
 from api.views.ukuran_baju_views import UkuranBajuAPIView, DetailUkuranBajuAPIView
 from api.views.baju_nikah_views import BajuNikahAPIView, DetailBajuNikahAPIView, BajuNikahFilterApi
 from api.views.penyewa_views import PenyewaAPIView, DetailPenyewaAPIView
-
 
 
 app_name = 'api'
