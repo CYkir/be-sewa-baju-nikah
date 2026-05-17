@@ -16,6 +16,7 @@ from api.views.penyewa_views import PenyewaAPIView, DetailPenyewaAPIView
 from api.views.transaksi_sewa_views import TransaksiSewaAPIView
 from api.views.pembayaran_views import  PembayaranAPIView
 from api.views.pengembalian_views import  PengembalianAPIView
+from api.views.struk_views import CetakStrukAPIView
 
 
 app_name = 'api'
@@ -50,6 +51,9 @@ urlpatterns = [
 
     #Pengembalian
     path('pengembalian/<int:pk>/',PengembalianAPIView.as_view(),name='pengembalian'),
+
+    #cetak struk
+    path('struk/<int:pk>/',CetakStrukAPIView.as_view(),name='struk'),
 ]
 
 if settings.DEBUG:
