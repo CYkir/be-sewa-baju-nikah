@@ -56,7 +56,7 @@ class SelesaikanTransaksiAPIView(APIView):
             ),
             'data': {
                 'kode_transaksi': (transaksi.kode_transaksi),
-                'nama_penyewa'  : (transaksi.nama_penyewa),
+                'nama_penyewa'  : (transaksi.penyewa.nama_penyewa),
                 'status_sewa'   : (transaksi.status_sewa)
             }
         }, status=status.HTTP_200_OK)
