@@ -73,15 +73,10 @@ class PengembalianAPIView(APIView):
             'status': status.HTTP_200_OK,
             'message': 'Baju berhasil dikembalikan',
             'data': {
-                'kode_transaksi': (
-                    transaksi.kode_transaksi
-                ),
-                'tanggal_dikembalikan': (
-                    transaksi.tanggal_dikembalikan
-                ),
-                'status_sewa': (
-                    transaksi.status_sewa
-                )
+                'kode_transaksi'        : (transaksi.kode_transaksi),
+                'nama_penyewa'          : (transaksi.penyewa.nama_penyewa),
+                'tanggal_dikembalikan'  : (transaksi.tanggal_dikembalikan),
+                'status_sewa'           : (transaksi.status_sewa)
             }
 
         }, status=status.HTTP_200_OK)
