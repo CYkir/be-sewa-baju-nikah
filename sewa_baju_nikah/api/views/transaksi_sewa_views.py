@@ -1,11 +1,13 @@
 from django.http import JsonResponse
 
 from rest_framework.views import APIView
+from rest_framework import generics
 from rest_framework import status
 from rest_framework.permissions import (
     IsAuthenticated,
     AllowAny
 )
+
 from sewa_baju_nikah_app.models import (
     TransaksiSewa
 )
@@ -19,13 +21,19 @@ from api.utils.transaction_helper import (
     generate_kode_transaksi
 )
 
+import django_filters.rest_framework
+from api.pagination import CustomPagination
+from rest_framework.filters import (
+    OrderingFilter
+)
+
 class TransaksiSewaAPIView(APIView):
 
     def get_permissions(self):
       if self.request.method == 'GET':
         return [
           IsAuthenticated(),
-          IsAdminPermission()
+          IsAdminOrKasirPermission()
         ]
 
       return [
@@ -75,3 +83,11 @@ class TransaksiSewaAPIView(APIView):
             'message': 'Transaksi gagal dibuat',
             'errors': serializer.errors,
         }, status=status.HTTP_400_BAD_REQUEST)
+
+class TransaksiSewaFilterApi(generics.ListAPIView):
+    queryset = TransaksiSewa.objects.all()
+    serializer_class = TransaksiSewaSerializer
+    filter_backends = [django_filters.rest_framework.DjangoFilterBackend, OrderingFilter]
+    filterset_fields = ['status_sewa']
+    ordering_fields = ['created_at', 'harga_sewa',]
+
