@@ -47,7 +47,7 @@ class PembayaranSerializer(serializers.ModelSerializer):
             )
         )
         # UPDATE STATUS TRANSAKSI
-        transaksi.status_sewa = 'SELESAI'
+        transaksi.status_sewa = 'DISEWA'
         transaksi.save()
 
         return pembayaran
