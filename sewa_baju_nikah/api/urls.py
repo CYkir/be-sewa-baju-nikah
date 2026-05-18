@@ -13,7 +13,7 @@ from api.views.kategori_baju_views import KategoriBajuAPIView, DetailKategoriBaj
 from api.views.ukuran_baju_views import UkuranBajuAPIView, DetailUkuranBajuAPIView
 from api.views.baju_nikah_views import BajuNikahAPIView, DetailBajuNikahAPIView, BajuNikahFilterApi
 from api.views.penyewa_views import PenyewaAPIView, DetailPenyewaAPIView
-from api.views.transaksi_sewa_views import TransaksiSewaAPIView
+from api.views.transaksi_sewa_views import TransaksiSewaAPIView, TransaksiSewaFilterApi
 from api.views.pembayaran_views import  PembayaranAPIView
 from api.views.pengembalian_views import  PengembalianAPIView
 from api.views.struk_views import CetakStrukAPIView
@@ -45,6 +45,7 @@ urlpatterns = [
 
     #Transaksi
     path('transaksi-sewa/',TransaksiSewaAPIView.as_view(),name='transaksi-sewa'),
+    path('traksaksi-sewa-filter', TransaksiSewaFilterApi.as_view(), name='filter-transaksi'),
 
     #pembayaran
     path('pembayaran/', PembayaranAPIView.as_view(),name='pembayaran'),
