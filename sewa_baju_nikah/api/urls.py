@@ -17,6 +17,8 @@ from api.views.transaksi_sewa_views import TransaksiSewaAPIView, TransaksiSewaFi
 from api.views.pembayaran_views import  PembayaranAPIView
 from api.views.pengembalian_views import  PengembalianAPIView
 from api.views.struk_views import CetakStrukAPIView
+from api.views.selesai_transaksi_views import SelesaikanTransaksiAPIView
+
 
 
 app_name = 'api'
@@ -52,6 +54,9 @@ urlpatterns = [
 
     #Pengembalian
     path('pengembalian/<int:pk>/',PengembalianAPIView.as_view(),name='pengembalian'),
+
+    #Selesaikan Transaksi
+    path('transaksi-selesai/<int:pk>/',SelesaikanTransaksiAPIView.as_view(),name='transaksi-selesai'),
 
     #cetak struk
     path('struk/<int:pk>/',CetakStrukAPIView.as_view(),name='struk'),
