@@ -1,5 +1,6 @@
 from django.contrib import admin
 
+
 from .models import (
     Profile,
     KategoriBaju,
@@ -10,6 +11,9 @@ from .models import (
     DetailTransaksiSewa,
     Pembayaran,
 )
+
+from import_export.admin import ImportExportModelAdmin
+
 
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
@@ -23,7 +27,7 @@ class ProfileAdmin(admin.ModelAdmin):
     ]
 
 @admin.register(KategoriBaju)
-class KategoriBajuAdmin(admin.ModelAdmin):
+class KategoriBajuAdmin(ImportExportModelAdmin):
 
     list_display = [
         'id',
@@ -34,7 +38,7 @@ class KategoriBajuAdmin(admin.ModelAdmin):
     ]
 
 @admin.register(UkuranBaju)
-class UkuranBajuAdmin(admin.ModelAdmin):
+class UkuranBajuAdmin(ImportExportModelAdmin):
 
     list_display = [
         'id',
@@ -105,3 +109,5 @@ class PembayaranAdmin(admin.ModelAdmin):
         'tanggal_bayar',
         'total_bayar',
     ]
+
+
