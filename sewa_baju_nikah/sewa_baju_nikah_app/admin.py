@@ -52,7 +52,7 @@ class UkuranBajuAdmin(ImportExportModelAdmin):
     ]
 
 @admin.register(BajuNikah)
-class BajuNikahAdmin(admin.ModelAdmin):
+class BajuNikahAdmin(ImportExportModelAdmin):
 
     list_display = [
         'id',
