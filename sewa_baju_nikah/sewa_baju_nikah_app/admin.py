@@ -43,6 +43,8 @@ class UkuranBajuAdmin(ImportExportModelAdmin):
     list_display = [
         'id',
         'ukuran',
+        'lingkar_dada',
+        'panjang_baju',
         'rekomendasi_tinggi_badan',
         'rekomendasi_berat_badan',
         'keterangan',
