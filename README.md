@@ -30,9 +30,9 @@ HANYA:
 * lihat detail baju
 
 TAPI:
-❌ tidak bisa transaksi langsung
-❌ tidak bayar online
-❌ tidak checkout
+- tidak bisa transaksi langsung
+- tidak bayar online
+- tidak checkout
 
 Karena pembayaran cash.
 
@@ -223,7 +223,7 @@ hanya:
 # KASIR
 
 yang melakukan:
-✅ transaksi
+- transaksi
 ✅ pembayaran cash
 ✅ pengembalian
 ✅ cetak struk
