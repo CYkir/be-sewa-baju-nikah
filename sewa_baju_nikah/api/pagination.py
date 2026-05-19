@@ -15,8 +15,9 @@ from rest_framework.pagination import (
     LimitOffsetPagination
 )
 
-from rest_framework.response import Response
-
+from rest_framework.response import (
+    Response
+)
 
 class CustomPagination(
     LimitOffsetPagination
@@ -30,9 +31,9 @@ class CustomPagination(
 
     max_limit = 50
 
-    # =============================================
-    # CUSTOM RESPONSE PAGINATION
-    # =============================================
+    # ==========================================
+    # CUSTOM PAGINATION RESPONSE
+    # ==========================================
 
     def get_paginated_response(
         self,
@@ -50,5 +51,5 @@ class CustomPagination(
                 'limit': self.limit,
                 'offset': self.offset,
             },
-            'data': data['data']
+            'data': data
         })
