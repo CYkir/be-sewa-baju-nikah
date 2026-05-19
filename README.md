@@ -224,9 +224,9 @@ hanya:
 
 yang melakukan:
 - transaksi
-✅ pembayaran cash
-✅ pengembalian
-✅ cetak struk
+- pembayaran cash
+- pengembalian
+- cetak struk
 
 ---
 
