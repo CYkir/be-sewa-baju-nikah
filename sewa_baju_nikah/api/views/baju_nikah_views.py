@@ -45,6 +45,7 @@ class BajuNikahAPIView(APIView):
             baju,
             many=True
         )
+        pagination_class = CustomPagination
         return JsonResponse({
             'success': True,
             'status': status.HTTP_200_OK,
