@@ -213,10 +213,10 @@ status_ketersediaan = TERSEDIA
 # USER
 
 hanya:
-✅ lihat katalog
-✅ lihat ukuran
-✅ lihat harga
-✅ lihat status tersedia
+- lihat katalog
+- lihat ukuran
+- lihat harga
+- lihat status tersedia
 
 ---
 
