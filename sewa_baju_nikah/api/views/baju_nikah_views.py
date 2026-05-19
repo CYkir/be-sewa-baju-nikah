@@ -41,17 +41,24 @@ class BajuNikahAPIView(APIView):
         baju = BajuNikah.objects.filter(
             status_data='AKTIF'
         ).order_by('-id')
+        paginator = CustomPagination()
+        paginated_data = paginator.paginate_queryset(
+            baju,
+            request
+        )
         serializer = BajuNikahSerializer(
             baju,
             many=True
         )
-        pagination_class = CustomPagination
-        return JsonResponse({
-            'success': True,
-            'status': status.HTTP_200_OK,
-            'message': 'Data baju nikah berhasil diambil',
-            'data': serializer.data,
-        }, status=status.HTTP_200_OK)
+        # return JsonResponse({
+        #     'success': True,
+        #     'status': status.HTTP_200_OK,
+        #     'message': 'Data baju nikah berhasil diambil',
+        #     'data': serializer.data,
+        # }, status=status.HTTP_200_OK)
+        return paginator.get_paginated_response(
+            serializer.data
+        )
 
     def post(self, request):
         serializer = BajuNikahSerializer(
