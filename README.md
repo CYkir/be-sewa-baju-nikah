@@ -9,10 +9,11 @@ fokusnya:
 * struk
 
 ---
-# Dokumentasi Postman 
-![klik disini](https://documenter.getpostman.com/view/32072008/2sBXqRkxSK#3b84aa72-1c2b-48f1-9b29-ec18c9c85bc9)
----
+# API Documentation
+Untuk melihat detail endpoint, request body, dan response dari API ini, silakan kunjungi dokumentasi Postman melalui tautan di bawah ini:
 
+[Dokumentasi API via Postman](https://documenter.getpostman.com/view/32072008/2sBXqRkxSK#3b84aa72-1c2b-48f1-9b29-ec18c9c85bc9)
+---
 ---
 # ERD
 ![ERD](sewa_baju_nikah_erd.png)
