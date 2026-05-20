@@ -8,6 +8,10 @@ fokusnya:
 * pengembalian
 * struk
 
+---
+# ERD
+![ERD](sewa_baju_nikah_erd.png)
+---
 
 ---
 # Bussiness Logic
