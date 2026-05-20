@@ -8,10 +8,23 @@ fokusnya:
 * pengembalian
 * struk
 
+
+---
+# Bussiness Logic
+```
+Business logic pada Sistem Informasi Sewa Baju Nikah Tradisional berfokus pada pengelolaan katalog, transaksi penyewaan, pembayaran cash, pengembalian, dan pencetakan struk. Sistem ini memiliki tiga peran utama yaitu user, kasir, dan admin. User hanya dapat melihat katalog baju adat melalui aplikasi hybrid berbasis Flutter, seperti melihat foto baju, kategori, ukuran, harga, detail produk, serta status ketersediaan baju. User tidak dapat melakukan checkout maupun pembayaran online karena seluruh transaksi dilakukan secara langsung dengan metode pembayaran cash.
+
+Kasir bertugas mengelola proses transaksi penyewaan. Ketika pelanggan datang ke toko atau menghubungi admin melalui WhatsApp, kasir akan menginput data penyewa seperti nama, nomor HP, dan alamat. Setelah itu kasir memilih baju yang ingin disewa beserta tanggal sewa dan tanggal pengembalian. Sistem kemudian melakukan pengecekan stok secara otomatis. Jika stok masih tersedia (stok > 0), maka transaksi dapat diproses. Setelah transaksi berhasil, stok baju akan berkurang. Jika stok mencapai 0, maka status ketersediaan otomatis berubah menjadi “Tidak Tersedia” sehingga baju tidak dapat disewa oleh pelanggan lain.
+
+Setelah proses penyewaan selesai, kasir menerima pembayaran secara cash dan sistem akan menyimpan data pembayaran. Sistem juga menghasilkan struk transaksi yang berisi kode transaksi, nama penyewa, nama baju, tanggal sewa, dan total pembayaran. Pada saat baju dikembalikan, kasir melakukan proses pengembalian melalui sistem. Setelah pengembalian berhasil, stok baju otomatis bertambah kembali dan status ketersediaan berubah menjadi “Tersedia”.
+
+Selain itu, admin memiliki hak akses untuk mengelola data kategori, ukuran, data baju, user, dan laporan transaksi. Sistem juga menyediakan public API untuk kebutuhan katalog aplikasi Flutter dan private API yang hanya dapat diakses oleh kasir atau admin setelah login.
+```
+
+---
+
 # HYBRID APP
 
-artinya:
-ada:
 * USER (lihat-lihat katalog)
 * KASIR/ADMIN (kelola transaksi)
 
