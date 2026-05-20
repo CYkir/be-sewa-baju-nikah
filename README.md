@@ -13,6 +13,12 @@ fokusnya:
 ![ERD](sewa_baju_nikah_erd.png)
 ---
 
+ERD pada Sistem Informasi Sewa Baju Nikah Tradisional menggambarkan hubungan antar data yang digunakan dalam proses penyewaan baju. Tabel utama pada sistem adalah tabel `bajunikah` yang menyimpan informasi baju seperti nama baju, harga sewa, stok, kondisi, dan status ketersediaan. Setiap baju terhubung dengan tabel `kategoribaju` untuk menentukan jenis atau asal daerah baju adat, serta terhubung dengan tabel `ukuranbaju` untuk informasi ukuran baju.
+
+Proses penyewaan dikelola melalui tabel `transaksisewa` yang menyimpan data transaksi seperti tanggal sewa, tanggal kembali, total pembayaran, dan status sewa. Setiap transaksi terhubung dengan tabel `penyewa` karena satu penyewa dapat melakukan beberapa transaksi penyewaan. Detail baju yang disewa disimpan pada tabel `detailtransaksisewa` sebagai penghubung antara transaksi dan data baju, sehingga satu transaksi dapat memiliki lebih dari satu baju.
+
+Pembayaran dicatat pada tabel `pembayaran` yang berhubungan dengan transaksi sewa dan user kasir yang menerima pembayaran. Selain itu, sistem juga memiliki tabel `profile` dan `auth_user` untuk mengatur data pengguna, role admin, dan kasir yang mengelola sistem. Dengan relasi antar tabel tersebut, sistem dapat mengelola data penyewaan, pembayaran, stok baju, dan pengembalian secara terintegrasi dan terstruktur.
+
 ---
 
 
