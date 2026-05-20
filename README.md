@@ -30,12 +30,6 @@ Selain itu, admin memiliki hak akses untuk mengelola data kategori, ukuran, data
 
 ---
 
-# HYBRID APP
-
-* USER (lihat-lihat katalog)
-* KASIR/ADMIN (kelola transaksi)
-
-
 # ROLE DALAM SISTEM
 
 ## 1. USER
