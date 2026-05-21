@@ -7,18 +7,15 @@ from sewa_baju_nikah_app.models import (
 )
 
 class BajuNikahSerializer(serializers.ModelSerializer):
-
     # OUTPUT
     kategori = serializers.CharField(
         source='kategori.nama_kategori',
         read_only=True
     )
-
     ukuran = serializers.CharField(
         source='ukuran.ukuran',
         read_only=True
     )
-
     # INPUT FK
     kategori_id = serializers.PrimaryKeyRelatedField(
         queryset=KategoriBaju.objects.all(),
