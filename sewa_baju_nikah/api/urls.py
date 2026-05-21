@@ -58,8 +58,6 @@ urlpatterns = [
     #Selesaikan Transaksi
     path('transaksi-selesai/<int:pk>/',SelesaikanTransaksiAPIView.as_view(),name='transaksi-selesai'),
 
-    #cetak struk
-    path('struk/<int:pk>/',CetakStrukAPIView.as_view(),name='struk'),
 ]
 
 if settings.DEBUG:
