@@ -19,8 +19,6 @@ from api.views.pengembalian_views import  PengembalianAPIView
 from api.views.struk_views import CetakStrukAPIView
 from api.views.selesai_transaksi_views import SelesaikanTransaksiAPIView
 
-
-
 app_name = 'api'
 
 urlpatterns = [
@@ -60,9 +58,7 @@ urlpatterns = [
 
     #cetak struk
     path('struk/<int:pk>/',CetakStrukAPIView.as_view(),name='struk'),
-
 ]
-
 if settings.DEBUG:
     urlpatterns += static(
         settings.MEDIA_URL,

@@ -40,8 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'sewa_baju_nikah_app',
     'api',
-    'rest_framework',
-    # 'rest_framework_simplejwt.token_blacklist',
+    'rest_framework', 
     'django_extensions',
     'rest_framework.authtoken',
     'django_filters',
@@ -50,7 +49,6 @@ INSTALLED_APPS = [
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        # 'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.TokenAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
@@ -94,7 +92,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'sewa_baju_nikah.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
