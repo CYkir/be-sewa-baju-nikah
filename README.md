@@ -9,7 +9,6 @@ fokusnya:
 * struk
 
 ---
-
 # ERD
 ![ERD](sewa_baju_nikah_erd.png)
 ---
@@ -32,9 +31,6 @@ Pembayaran dicatat pada tabel `pembayaran` yang berhubungan dengan transaksi sew
 
 ---
 
-
-
----
 # Bussiness Logic
 
 Business logic pada Sistem Informasi Sewa Baju Nikah Tradisional berfokus pada pengelolaan katalog, transaksi penyewaan, pembayaran cash, pengembalian, dan pencetakan struk. Sistem ini memiliki tiga peran utama yaitu user, kasir, dan admin. User hanya dapat melihat katalog baju adat melalui aplikasi hybrid berbasis Flutter, seperti melihat foto baju, kategori, ukuran, harga, detail produk, serta status ketersediaan baju. User tidak dapat melakukan checkout maupun pembayaran online karena seluruh transaksi dilakukan secara langsung dengan metode pembayaran cash.
