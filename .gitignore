@@ -9,7 +9,7 @@
 *$py.class
 
 # Database Django (agar db lokal tidak nimpa server)
-*.sqlite3
+# *.sqlite3
 
 # Folder Media & Static (opsional)
 /static/
