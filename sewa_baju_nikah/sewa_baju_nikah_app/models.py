@@ -274,6 +274,7 @@ class TransaksiSewa(StatusModel):
         ('DISEWA', 'DISEWA'),
         ('DIKEMBALIKAN', 'DIKEMBALIKAN'),
         ('SELESAI', 'SELESAI'),
+        ('DIBATALKAN', 'DIBATALKAN'),
     )
 
     kode_transaksi = models.CharField(
