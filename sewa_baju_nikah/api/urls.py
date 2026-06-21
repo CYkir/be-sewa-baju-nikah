@@ -19,6 +19,7 @@ from api.views.pengembalian_views import  PengembalianAPIView
 from api.views.struk_views import CetakStrukAPIView
 from api.views.selesai_transaksi_views import SelesaikanTransaksiAPIView
 from api.views.batalkan_transaksi_views import BatalkanTransaksiAPIView
+from api.views.profile_views import ProfileAPIView
 
 app_name = 'api'
 
@@ -26,6 +27,9 @@ urlpatterns = [
     path('auth/register/', RegisterAPIView.as_view(),name='register'),
     path('auth/login/',LoginAPIView.as_view(),name='login'),
     path('auth/logout/',LogoutAPIView.as_view(), name='logout'),
+    
+    # Profile
+    path('profile/', ProfileAPIView.as_view(), name='profile'),
 
     #Kategori
     path('kategori-baju/',KategoriBajuAPIView.as_view(),name='kategori-baju'),
