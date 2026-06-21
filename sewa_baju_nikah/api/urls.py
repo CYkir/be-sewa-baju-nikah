@@ -47,7 +47,7 @@ urlpatterns = [
     #Transaksi
     path('transaksi-sewa/',TransaksiSewaAPIView.as_view(),name='transaksi-sewa'),
     path('tranksaksi-sewa-filter/', TransaksiSewaFilterApi.as_view(), name='filter-transaksi'),
-    
+
     # Batalkan Transaksi
     path('transaksi-batal/<int:pk>/', BatalkanTransaksiAPIView.as_view(), name='transaksi-batal'),
 
