@@ -18,6 +18,7 @@ from api.views.pembayaran_views import  PembayaranAPIView
 from api.views.pengembalian_views import  PengembalianAPIView
 from api.views.struk_views import CetakStrukAPIView
 from api.views.selesai_transaksi_views import SelesaikanTransaksiAPIView
+from api.views.batalkan_transaksi_views import BatalkanTransaksiAPIView
 
 app_name = 'api'
 
@@ -46,6 +47,9 @@ urlpatterns = [
     #Transaksi
     path('transaksi-sewa/',TransaksiSewaAPIView.as_view(),name='transaksi-sewa'),
     path('tranksaksi-sewa-filter/', TransaksiSewaFilterApi.as_view(), name='filter-transaksi'),
+    
+    # Batalkan Transaksi
+    path('transaksi-batal/<int:pk>/', BatalkanTransaksiAPIView.as_view(), name='transaksi-batal'),
 
     #pembayaran
     path('pembayaran/', PembayaranAPIView.as_view(),name='pembayaran'),
