@@ -3,9 +3,6 @@ from django.contrib.auth.models import User
 import os
 import time
 
-# =========================================================
-# ABSTRACT MODEL
-# =========================================================
 
 class StatusModel(models.Model):
 
@@ -31,19 +28,13 @@ class StatusModel(models.Model):
     class Meta:
         abstract = True
 
-    # =====================================================
-    # SOFT DELETE
-    # =====================================================
-
     def delete(self, *args, **kwargs):
         self.status_data = 'NONAKTIF'
         self.save()
 
 
-# =========================================================
-# PROFILE
-# =========================================================
 
+# PROFILE
 class Profile(StatusModel):
 
     ROLE_CHOICES = (
@@ -93,9 +84,7 @@ class Profile(StatusModel):
         return self.nama_lengkap
 
 
-# =========================================================
 # KATEGORI BAJU
-# =========================================================
 
 class KategoriBaju(StatusModel):
 
@@ -118,10 +107,8 @@ class KategoriBaju(StatusModel):
         return self.nama_kategori
 
 
-# =========================================================
-# UKURAN BAJU
-# =========================================================
 
+# UKURAN BAJU
 class UkuranBaju(StatusModel):
 
     ukuran = models.CharField(
@@ -140,9 +127,8 @@ class UkuranBaju(StatusModel):
         return self.ukuran
 
 
-# =========================================================
+
 # BAJU NIKAH
-# =========================================================
 
 def upload_foto_baju(instance, filename):
     timestamp = int(time.time())
@@ -225,9 +211,8 @@ class BajuNikah(StatusModel):
 
     def __str__(self):
         return f"{self.nama_baju} - {self.ukuran}"
-# =========================================================
+
 # PENYEWA
-# =========================================================
 
 class Penyewa(StatusModel):
 
@@ -263,10 +248,8 @@ class Penyewa(StatusModel):
     def __str__(self):
         return self.nama_penyewa
 
-# =========================================================
-# TRANSAKSI SEWA
-# =========================================================
 
+# TRANSAKSI SEWA
 class TransaksiSewa(StatusModel):
 
     STATUS_SEWA = (
@@ -323,10 +306,8 @@ class TransaksiSewa(StatusModel):
     def __str__(self):
         return self.kode_transaksi
 
-# =========================================================
-# DETAIL TRANSAKSI SEWA
-# =========================================================
 
+# DETAIL TRANSAKSI SEWA
 class DetailTransaksiSewa(StatusModel):
 
     transaksi = models.ForeignKey(
@@ -357,10 +338,8 @@ class DetailTransaksiSewa(StatusModel):
     def __str__(self):
         return f"{self.transaksi.kode_transaksi}"
 
-# =========================================================
-# PEMBAYARAN
-# =========================================================
 
+# PEMBAYARAN
 class Pembayaran(StatusModel):
 
     transaksi = models.OneToOneField(
