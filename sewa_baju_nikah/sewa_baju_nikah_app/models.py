@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 import os
 import time
 
-
 class StatusModel(models.Model):
 
     STATUS_DATA = (
@@ -85,7 +84,6 @@ class Profile(StatusModel):
 
 
 # KATEGORI BAJU
-
 class KategoriBaju(StatusModel):
 
     nama_kategori = models.CharField(
@@ -213,7 +211,6 @@ class BajuNikah(StatusModel):
         return f"{self.nama_baju} - {self.ukuran}"
 
 # PENYEWA
-
 class Penyewa(StatusModel):
 
     JENIS_KELAMIN = (

@@ -14,13 +14,7 @@ from api.serializers.auth_serializers import (
     RegisterSerializer,
     LoginSerializer,
 )
-
-
-
-# =========================================================
 # REGISTER
-# =========================================================
-
 class RegisterAPIView(APIView):
 
     def post(self, request):
@@ -38,7 +32,7 @@ class RegisterAPIView(APIView):
                 'status': status.HTTP_201_CREATED,
                 'message': 'Register berhasil',
                 'data': {
-                  'status' : 200,
+                    'status' : 200,
                     'user': {
                         'id': user.id,
                         'username': user.username,
@@ -57,9 +51,7 @@ class RegisterAPIView(APIView):
             'errors': serializer.errors,
         }, status=status.HTTP_400_BAD_REQUEST)
 
-# =========================================================
 # LOGIN
-# =========================================================
 class LoginAPIView(APIView):
     def post(self, request):
         serializer = LoginSerializer(
@@ -97,10 +89,8 @@ class LoginAPIView(APIView):
             'message': 'Login gagal',
             'errors': serializer.errors,
         }, status=status.HTTP_400_BAD_REQUEST)
-# =========================================================
-# LOGOUT
-# =========================================================
 
+# LOGOUT
 class LogoutAPIView(APIView):
     permission_classes = [IsAuthenticated]
     def post(self, request):

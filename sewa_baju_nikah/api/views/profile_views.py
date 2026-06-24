@@ -1,19 +1,13 @@
 from django.http import JsonResponse
-
 from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
-
 from sewa_baju_nikah_app.models import Profile
 from api.serializers.profile_serializers import ProfileSerializer
-
-
 class ProfileAPIView(APIView):
-
     permission_classes = [
         IsAuthenticated
     ]
-
     def get(self, request):
         try:
             profile = Profile.objects.get(
@@ -33,7 +27,6 @@ class ProfileAPIView(APIView):
                 'request': request
             }
         )
-
         return JsonResponse({
             'success': True,
             'status': status.HTTP_200_OK,

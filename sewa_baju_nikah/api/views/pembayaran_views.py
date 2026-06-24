@@ -1,15 +1,12 @@
 from django.http import JsonResponse
-
 from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.permissions import (
     IsAuthenticated,
 )
-
 from sewa_baju_nikah_app.models import (
     Pembayaran
 )
-
 from api.serializers.pembayaran_serializers import (
     PembayaranSerializer
 )
@@ -17,19 +14,13 @@ from api.serializers.pembayaran_serializers import (
 from api.permissions.role_permissions import (
     IsAdminPermission, IsKasirPermission
 )
-
-
-
-
 class PembayaranAPIView(APIView):
-
     def get_permissions(self):
       if self.request.method == 'GET':
         return [
           IsAuthenticated(),
           IsAdminPermission()
         ]
-
       return [
             IsAuthenticated(),
             IsKasirPermission()

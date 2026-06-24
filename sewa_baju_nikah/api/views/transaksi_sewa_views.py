@@ -1,5 +1,4 @@
 from django.http import JsonResponse
-
 from rest_framework.views import APIView
 from rest_framework import generics
 from rest_framework import status
@@ -7,7 +6,6 @@ from rest_framework.permissions import (
     IsAuthenticated,
     AllowAny
 )
-
 from sewa_baju_nikah_app.models import (
     TransaksiSewa
 )
@@ -26,16 +24,13 @@ from api.pagination import CustomPagination
 from rest_framework.filters import (
     OrderingFilter
 )
-
 class TransaksiSewaAPIView(APIView):
-
     def get_permissions(self):
       if self.request.method == 'GET':
         return [
           IsAuthenticated(),
           IsAdminOrKasirPermission()
         ]
-
       return [
             IsAuthenticated(),
             IsKasirPermission()

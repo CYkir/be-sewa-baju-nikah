@@ -27,8 +27,6 @@ class BajuNikahAPIView(APIView):
         MultiPartParser,
         FormParser
     )
-
-
     def get_permissions(self):
         if self.request.method == 'GET':
             return [AllowAny()]
@@ -36,7 +34,6 @@ class BajuNikahAPIView(APIView):
             IsAuthenticated(),
             IsAdminOrKasirPermission()
         ]
-
     def get(self, request):
         baju = BajuNikah.objects.filter(
             status_data='AKTIF'
@@ -50,12 +47,6 @@ class BajuNikahAPIView(APIView):
             baju,
             many=True
         )
-        # return JsonResponse({
-        #     'success': True,
-        #     'status': status.HTTP_200_OK,
-        #     'message': 'Data baju nikah berhasil diambil',
-        #     'data': serializer.data,
-        # }, status=status.HTTP_200_OK)
         return paginator.get_paginated_response(
             serializer.data
         )

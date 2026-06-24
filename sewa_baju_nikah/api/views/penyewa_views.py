@@ -1,34 +1,15 @@
 from django.http import JsonResponse
-
 from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.permissions import (
     IsAuthenticated,
     AllowAny
 )
-
-from sewa_baju_nikah_app.models import (
-    Penyewa
-)
-
-from api.serializers.penyewa_serializers import (
-    PenyewaSerializer
-)
-
-from api.permissions.role_permissions import (
-    IsAdminOrKasirPermission
-)
-
-
-
-
-
-# =========================================================
+from sewa_baju_nikah_app.models import Penyewa
+from api.serializers.penyewa_serializers import PenyewaSerializer
+from api.permissions.role_permissions import IsAdminOrKasirPermission
 # LIST & CREATE
-# =========================================================
-
 class PenyewaAPIView(APIView):
-
     def get_permissions(self):
             if self.request.method == 'GET':
                 return [AllowAny()]
@@ -36,9 +17,7 @@ class PenyewaAPIView(APIView):
                 IsAuthenticated(),
                 IsAdminOrKasirPermission()
             ]
-
     def get(self, request):
-
         penyewa = Penyewa.objects.filter(
             status_data='AKTIF'
         ).order_by('-id')
@@ -76,7 +55,6 @@ class PenyewaAPIView(APIView):
         }, status=status.HTTP_400_BAD_REQUEST)
 
 class DetailPenyewaAPIView(APIView):
-
     def get_permissions(self):
         if self.request.method == 'GET':
             return [AllowAny()]
@@ -84,9 +62,7 @@ class DetailPenyewaAPIView(APIView):
                 IsAuthenticated(),
                 IsAdminOrKasirPermission()
             ]
-
     def get_object(self, pk):
-
         try:
             return Penyewa.objects.get(
                 pk=pk,
@@ -94,7 +70,6 @@ class DetailPenyewaAPIView(APIView):
             )
         except Penyewa.DoesNotExist:
             return None
-
     def get(self, request, pk):
         penyewa = self.get_object(pk)
         if penyewa is None:
@@ -115,9 +90,7 @@ class DetailPenyewaAPIView(APIView):
             'data': serializer.data,
         }, status=status.HTTP_200_OK)
 
-
     def patch(self, request, pk):
-
         penyewa = self.get_object(pk)
         if penyewa is None:
             return JsonResponse({

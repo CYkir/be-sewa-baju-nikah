@@ -1,27 +1,12 @@
 from django.http import JsonResponse
-
 from rest_framework.views import APIView
 from rest_framework import status
-from rest_framework.permissions import (
-    IsAuthenticated
-)
-
+from rest_framework.permissions import IsAuthenticated
 from datetime import date
-
-from sewa_baju_nikah_app.models import (
-
-    TransaksiSewa,
-    DetailTransaksiSewa
-
-)
-from api.permissions.role_permissions import (
-    IsKasirPermission
-)
-
+from sewa_baju_nikah_app.models import TransaksiSewa,DetailTransaksiSewa
+from api.permissions.role_permissions import IsKasirPermission
 class PengembalianAPIView(APIView):
-
     def get_permissions(self):
-
         return [
             IsAuthenticated(),
             IsKasirPermission()
