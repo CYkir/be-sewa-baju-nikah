@@ -1,6 +1,5 @@
 from django.http import JsonResponse
 from django.db import transaction
-
 from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
@@ -13,8 +12,6 @@ from sewa_baju_nikah_app.models import (
 from api.permissions.role_permissions import (
     IsKasirPermission
 )
-
-
 class BatalkanTransaksiAPIView(APIView):
 
     def get_permissions(self):
